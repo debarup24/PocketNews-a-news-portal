@@ -1,19 +1,17 @@
-"use client" 
+
 
 import Link from 'next/link'
-import React, { useState } from 'react'
+import React from 'react'
 import { Button } from "@/components/ui/button"
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from './ui/navigation-menu'
 import { Switch } from "@/components/ui/switch"
-import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
+import MobileMenu from './MobileMenu'
+
 
 
 
 const Navbar = () => {
-   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-   const togggleMobileMenu = () => {
-       setIsMobileMenuOpen(!isMobileMenuOpen);
-   }
+   
     
   return (
     <header className='py-5 text-gray-700 shadow-md  transition-colors duration-300'>
@@ -50,11 +48,11 @@ const Navbar = () => {
       </NavigationMenuItem>
 
       <NavigationMenuItem>
-       <NavigationMenuLink href='/contact' className='font-semibold' >Contact</NavigationMenuLink>
+       <NavigationMenuLink href='/about' className='font-semibold'>About</NavigationMenuLink>
      </NavigationMenuItem>
 
      <NavigationMenuItem>
-       <NavigationMenuLink href='/about' className='font-semibold' >About</NavigationMenuLink>
+       <NavigationMenuLink href='/contact' className='font-semibold'>Contact</NavigationMenuLink>
      </NavigationMenuItem>
 
 
@@ -72,14 +70,7 @@ const Navbar = () => {
         </div>
      
        {/* hamburgermenu menus for sm : */}
-           <div className='md:hidden lg:hidden'>
-            <Button onClick={togggleMobileMenu}> 
-                 {
-                   isMobileMenuOpen? ( <AiOutlineClose className='size-20'/> ) : ( <AiOutlineMenu size={24}/>)
-                 }
-            </Button>
-
-           </div>
+          <MobileMenu/>
 
         </nav>
     </header>
