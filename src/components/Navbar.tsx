@@ -1,4 +1,4 @@
-
+"use client"
 
 import Link from 'next/link'
 import React from 'react'
@@ -6,12 +6,13 @@ import { Button } from "@/components/ui/button"
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from './ui/navigation-menu'
 import { Switch } from "@/components/ui/switch"
 import MobileMenu from './MobileMenu'
+import { usePathname } from 'next/navigation'
 
 
 
 
 const Navbar = () => {
-   
+    const pathname = usePathname();
     
   return (
     <header className='py-5 text-gray-700 shadow-md  transition-colors duration-300'>
@@ -27,7 +28,7 @@ const Navbar = () => {
  <NavigationMenu className='hidden md:flex lg:flex'>
    <NavigationMenuList className='flex space-x-8'>
      <NavigationMenuItem>
-       <NavigationMenuLink href='/news' className='font-semibold' >News</NavigationMenuLink>
+       <NavigationMenuLink href='/news' className={` ${pathname === '/news' ? 'text-red-600 font-semibold' : ''}  hover:text-gray-500 font-semibold`} >News</NavigationMenuLink>
      </NavigationMenuItem>
      <NavigationMenuItem>
        <NavigationMenuTrigger className='font-semibold'>Category</NavigationMenuTrigger>
@@ -48,11 +49,11 @@ const Navbar = () => {
       </NavigationMenuItem>
 
       <NavigationMenuItem>
-       <NavigationMenuLink href='/about' className='font-semibold'>About</NavigationMenuLink>
+       <NavigationMenuLink href='/about' className={` ${pathname === '/about' ? 'text-red-600 font-semibold' : ''} font-semibold hover:text-gray-500`}>About</NavigationMenuLink>
      </NavigationMenuItem>
 
      <NavigationMenuItem>
-       <NavigationMenuLink href='/contact' className='font-semibold'>Contact</NavigationMenuLink>
+       <NavigationMenuLink href='/contact' className={` ${pathname === '/contact' ? 'text-red-600 font-semibold' : ''} hover:text-gray-500 font-semibold`}>Contact</NavigationMenuLink>
      </NavigationMenuItem>
 
 
