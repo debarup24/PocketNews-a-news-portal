@@ -1,5 +1,6 @@
 import Banner from "@/components/Banner";
 import NewsCard from "@/components/NewsCard";
+import NewsLetter from "@/components/NewsLetter";
 import { NewsItems } from "@/types/news";
 import Image from "next/image";
 
@@ -22,7 +23,7 @@ export default async function Home() {
       </div>
 
      </div>
-
+      <NewsLetter/>
     </div>
   );
 }
