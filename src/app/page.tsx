@@ -1,4 +1,5 @@
 import Banner from "@/components/Banner";
+import NewsCard from "@/components/NewsCard";
 import { NewsItems } from "@/types/news";
 import Image from "next/image";
 
@@ -11,10 +12,11 @@ export default async function Home() {
       <Banner/>
      <div className="my-8">
       <h2 className="text-2xl font-bold mb-8"> Latest <span className="text-red-600">News</span></h2>
-      <div>
+      <div className="grid md:grid-cols-3 lg:grid-cols-3 grid-cols-1 gap-5 justify-between">
         {
           news.slice(0, 3).map((item : NewsItems)=> (
-            <div key={item._id}>{item.title}</div>
+            
+            <NewsCard key={item._id} item = {item}/>
           ))
         }
       </div>
