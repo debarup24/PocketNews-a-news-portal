@@ -2,7 +2,7 @@ import Banner from "@/components/Banner";
 import NewsCard from "@/components/NewsCard";
 import NewsLetter from "@/components/NewsLetter";
 import { NewsItems } from "@/types/news";
-import Image from "next/image";
+
 
 export default async function Home() {
   const data = await fetch(`https://news-api-next-js-kappa.vercel.app/api/news`)
