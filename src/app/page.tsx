@@ -5,8 +5,8 @@ import { NewsItems } from "@/types/news";
 
 
 export default async function Home() {
-  const data = await fetch(`https://news-api-next-js-kappa.vercel.app/api/news`)
-  const news = await data.json()
+  const respones = await fetch(`https://news-api-next-js-kappa.vercel.app/api/news`)
+  const news = await respones.json()
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12"> 
