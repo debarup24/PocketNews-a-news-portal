@@ -14,8 +14,13 @@ export async function generateStaticParams() {
   }))
 }
 
-const NewsDetailspage = async ({ params }: { params: { id: string } }) => {
-  const post = await fetch(`https://news-api-next-js-kappa.vercel.app/api/news/${params.id}`).then(
+const NewsDetailspage = async ({
+  params,
+}: {
+  params: Promise<{ id: string }>
+}) => {
+  const id = (await params).id
+  const post = await fetch(`https://news-api-next-js-kappa.vercel.app/api/news/${id}`).then(
     (res) => res.json()
   )
 
