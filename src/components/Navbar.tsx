@@ -1,21 +1,27 @@
 "use client"
 
 import Link from 'next/link'
-import React from 'react'
+import React, { useContext } from 'react'
 import { Button } from "@/components/ui/button"
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from './ui/navigation-menu'
 import { Switch } from "@/components/ui/switch"
 import MobileMenu from './MobileMenu'
 import { usePathname } from 'next/navigation'
+import { ThemeContext } from '@/context/themeContext'
 
 
+interface ThemeContextType {
+  isDarkMode: boolean;
+  toggleTheme: () => void;
+}
 
 
 const Navbar = () => {
     const pathname = usePathname();
     
+    const {isDarkMode, toggleTheme}: any = useContext(ThemeContext)
   return (
-    <header className='py-5 text-gray-700 shadow-md  transition-colors duration-300'>
+    <header className={`py-4 ${isDarkMode ? "bg-gray-900 text-white" : "bg-white text-gray-900"} shadow-md transition-colors duration-300`}>
         <nav className='max-w-7xl mx-auto flex justify-between items-center px-4 sm:px-6 lg:px-8'>
             <div className='text-xl font-bold'>
                 <Link href="">Pocket <span className='font-semibold text-red-600'>News</span></Link>
@@ -31,7 +37,7 @@ const Navbar = () => {
        <NavigationMenuLink href='/news' className={` ${pathname === '/news' ? 'text-red-600 font-semibold' : ''}  hover:text-gray-500 font-semibold`} >News</NavigationMenuLink>
      </NavigationMenuItem>
      <NavigationMenuItem>
-       <NavigationMenuTrigger className='font-semibold'>Category</NavigationMenuTrigger>
+       <NavigationMenuTrigger className='dark:bg-slate-900 dark:text-red-400 font-semibold'>Category</NavigationMenuTrigger>
        <NavigationMenuContent>
          <NavigationMenuLink>
           <ul className='text-gray-600 shadow-md py-5 px-5 space-y-2'>
@@ -63,11 +69,12 @@ const Navbar = () => {
    </div>
 
      <div className='hidden md:flex lg:flex items-center'>
-      <div className='flex items-center mx-1'>
+      <div onClick={toggleTheme}
+      className='flex items-center mx-1'>
         <span className='mr-2'>Dark Mode</span>
         <Switch />
         </div>
-        <Button variant="default" className='bg-slate-50 hover:bg-slate-900 text-black hover:text-white px-6 ml-2'>Login</Button>
+        <Button variant="default" className=' px-6 ml-2 shadow-md shadow-red-500'>Login</Button>
         </div>
      
        {/* hamburgermenu menus for sm : */}
