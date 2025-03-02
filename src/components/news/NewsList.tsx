@@ -27,7 +27,7 @@ const NewsList = () => {
       {/* Search bar */}
        <SearchBar onSearch = {setSearch} />
        
-       {/* category select */}
+       {/* category selection */}
        <CategoryFilter onCategoryChange = {setCategory}/>
        </div>
       {/* Present News */}
